@@ -5,17 +5,53 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
   output   = "../generated/prisma"
 }
-
 datasource db {
   provider = "postgresql"
+
 }
 
 
-model User{
-  id Int @id @default(autoincrement())
-  email String
-  password String
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  wallet    Wallet?
+  createdAt DateTime @default(now())
+}
+model Wallet {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  balance   Int      @default(0)
+
+  user        User          @relation(fields: [userId], references: [id])
+  transactions Transaction[]
+
+  createdAt DateTime @default(now())
+}
+
+model Transaction {
+  id        String             @id @default(uuid())
+  walletId  String
+  amount    Int
+  type      TransactionType
+  status    TransactionStatus
+
+  wallet    Wallet             @relation(fields: [walletId], references: [id])
+
+  createdAt DateTime           @default(now())
+
+  @@index([walletId])
+}
+
+enum TransactionType {
+  CREDIT
+  DEBIT
+}
+
+enum TransactionStatus {
+  SUCCESS
+  FAILED
 }
