@@ -1,7 +1,7 @@
- import type { FastifyInstance } from "fastify" 
+import type { FastifyInstance } from "fastify"
+import { signup, signin } from "../../controllers/auth.controller.js"
 
 export async function authRoutes(app: FastifyInstance) {
-   app.get("/auth", async () => {
-    return { pong: true }
-  })
+  app.post("/signup", signup)
+  app.post("/login", signin)
 }

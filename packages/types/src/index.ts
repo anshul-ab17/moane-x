@@ -1,4 +1,4 @@
-export * from "./auth";
+export * from "./src/auth";
 export * from "./wallet";
 export * from "./transaction";
-export * from "./enums";
+export * from "./src/enums";
