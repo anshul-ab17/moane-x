@@ -17,6 +17,10 @@
     "typescript": "^5.9.0"
   },
   "dependencies": {
-    "fastify": "^5.6.2"
+    "fastify": "^5.6.2",
+    "@repo/db": "workspace:*",
+    "@repo/schemas": "workspace:*",
+    "@repo/services": "workspace:*",
+    "@repo/types": "workspace:*"
   }
 }

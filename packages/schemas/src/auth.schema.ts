@@ -5,7 +5,7 @@ export const signupSchema =z.object({
     password:z.string().min(8)
 })
 
-export const signipSchema =z.object({
+export const signinSchema =z.object({
     email:z.email(),
     password:z.string().min(8)
 }) 

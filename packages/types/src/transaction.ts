@@ -1,4 +1,4 @@
-import { TransactionStatus, TransactionType } from "./src/enums";
+import { TransactionStatus, TransactionType } from "./enums.js";
 
 export interface Transaction {
   id: string;
